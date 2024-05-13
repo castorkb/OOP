@@ -49,6 +49,10 @@ class Triangle(Figure):
     '''Треугольник'''
 
     def __init__(self, a, b, c):
+
+
+
+
         super().__init__(a, b, c, 0)
 
     def perimeter(self):
@@ -398,3 +402,68 @@ literature2 = Literature("Литература", 3, "Сидоров", "Твор�
 
 print(mathematics1 == mathematics2)
 print(literature1 == literature2)"""
+
+
+#УРОК ЧЕТЫРИ
+"""class Test:
+    def __init__(self, test_1, test_2):
+        self.test_1 = test_1
+        self.test_2 = test_2
+    def __str__(self):
+        return f"{self.test_1} {self.test_2}"
+    def __repr__(self):
+        return f"{self.test_1} {self.test_2}"
+
+
+test_pr_1 = Test(1, 2)
+test_pr_2 = Test(3,4)
+# print(test_pr_1)
+# print(test_pr_2)
+# setattr(test_pr_1, 'test_1' ,12)
+# print(test_pr_1)
+# print(test_pr_2)
+#print(dir(test_pr_1))"""
+
+"""class Test:
+    def __call__(self, message):
+        print(message.upper(), ' ', message.lower())
+        return True
+test_1 = Test()
+test_1("Hello world")
+
+print(test_1)"""
+
+#ПРАКТИКА 4
+'''1. Создайте класс MyTime. Конструктор должен принимать на вход
+строку вида ЧЧ:ММ (часы:минуты) и преобразовывать их в
+отдельные атрибуты hour и min. Обратите внимание, и часы,
+минуты могут быть указаны с незначащим нулём, например,
+05:35.
+
+2. Определите метод __int__, выводящий на экран целое число –
+полное количество минут (например, int(02:05) = 125).
+
+3. Определите метод, преобразующий полученное время в 12-
+часовой формат (с указанием AM (до полудня) или PM (после
+полудня).'''
+class MyTime:
+    def __init__(self, time_str):
+        time_str = time_str.split(':')
+        self.hours = int(time_str[0])
+        self.minutes = int(time_str[1])
+
+    def __str__(self):
+        return f"{self.hours:02d}:{self.minutes:02d}"
+
+    def __int__(self):
+        return self.hours * 60 + self.minutes
+
+
+time_test = MyTime("12:22")
+print(time_test.hours)
+print(time_test.minutes)
+print(time_test)
+print(int(time_test))
+
+
+
