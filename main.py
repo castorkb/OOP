@@ -145,6 +145,66 @@ if __name__ == "__main__":
 
 #ЗАДАНИЕ № ВТОРОЙ УРОК
 
+# class Figure(ABC):
+#     '''Список фигур'''
+#
+#     def __init__(self, a, b, c, d):
+#         self.a = a
+#         self.b = b
+#         self.c = c
+#         self.d = d
+#     @abstractmethod
+#     isPossible():
+#     '''проверка возмоюна ли фингура'''
+#         pass
+#
+#
+#
+#     def perimeter(self):
+#         '''Вычисление периметра для фигур'''
+#         return self.a + self.b + self.c + self.d
+#
+#
+# class Triangle(Figure):
+#     '''Треугольник'''
+#
+#     def __init__(self, a, b, c):
+#
+#
+#
+#
+#         super().__init__(a, b, c, 0)
+#
+#     def perimeter(self):
+#         '''Вычисление периметра для треугольника'''
+#         return self.a + self.b + self.c
+#
+#
+# class Tetragon(Figure):
+#     '''Четырехугольник'''
+#
+#     def __init__(self, a, b, c, d):
+#         super().__init__(a, b, c, d)
+#
+#     def perimeter(self):
+#         '''Вычисление периметра для четырехугольника'''
+#         return self.a + self.b + self.c + self.d
+# class Square(Tetragon):
+#     '''Квадрат'''
+#     def __init__(self, a):
+#         super().__init__(a, a, a, a)
+#     def perimeter(self):
+#         '''Вычисление периметра для квадрата'''
+#         return 4 * self.a
+#
+# class Rectangle(Tetragon):
+#     '''Прямоугольник'''
+#     def __init__(self, a, b):
+#         super().__init__(a, b, a, b)
+#     def perimeter(self):
+#         '''Вычисление периметра для прямоугольника'''
+#         return 2 * (self.a + self.b)
+
 
 
 
@@ -434,6 +494,7 @@ test_1("Hello world")
 print(test_1)"""
 
 #ПРАКТИКА 4
+
 '''1. Создайте класс MyTime. Конструктор должен принимать на вход
 строку вида ЧЧ:ММ (часы:минуты) и преобразовывать их в
 отдельные атрибуты hour и min. Обратите внимание, и часы,
@@ -446,24 +507,246 @@ print(test_1)"""
 3. Определите метод, преобразующий полученное время в 12-
 часовой формат (с указанием AM (до полудня) или PM (после
 полудня).'''
-class MyTime:
+
+
+"""class MyTime:
+    '''Время'''
     def __init__(self, time_str):
+        '''Конструктор'''
+
         time_str = time_str.split(':')
         self.hours = int(time_str[0])
         self.minutes = int(time_str[1])
 
     def __str__(self):
+        '''Преобразования объекта времени в строку'''
         return f"{self.hours:02d}:{self.minutes:02d}"
 
     def __int__(self):
+        '''Преобразования объекта времени в целое число'''
         return self.hours * 60 + self.minutes
 
+    def format_12_hour(self):
+        '''Форматирования времени в 12-часовой формат с AM/PM'''
+        period = "AM"
+        hours12 = self.hours
+        if self.hours >= 12:
+            period = "PM"
+            if self.hours > 12:
+                hours12 = self.hours - 12
+        if hours12 == 0:
+            hours12 = 12
+        return f"{hours12:02d}:{self.minutes:02d} {period}"
 
-time_test = MyTime("12:22")
-print(time_test.hours)
-print(time_test.minutes)
-print(time_test)
-print(int(time_test))
 
+time_test_1 = MyTime("02:05")
+print(int(time_test_1))
+
+time_test_2 = MyTime("14:30")
+print(int(time_test_2))
+
+print(time_test_1.format_12_hour())
+print(time_test_2.format_12_hour())"""
+
+
+#УРОК ПЯТЬ
+
+"""class Animal:
+    def __init__(self, name):
+        self.name = name
+
+class Zoo:
+    def __init__(self):
+        self.cage = []
+
+myzoo1 = Zoo()
+tiger01 = Animal("Tiger 1")
+tiger02 = Animal("Tiger 2")
+myzoo1.cage.append(tiger01)
+myzoo1.cage.append(tiger02)
+for t in myzoo1.cage:
+    print(t.name)
+
+class Animal:
+    paws = 4
+    tail = 1
+    eyes = 2
+    def __init__(self):
+        self.paws = Animal.paws
+        self.tail = Animal.tail
+        self.eyes = Animal.eyes
+class Cat(Animal):
+    def printProperties(self):
+        print(self.paws,self.tail, self.eyes)
+class Zoo:
+    def __init__(self):
+        self.cage = [Animal(), Cat()]
+        print(self.cage[0].paws,self.cage[0].tail, self.cage[0].eyes)
+mycat1 = Cat()
+mycat1.printProperties() # 4 1 2
+myzoo1 = Zoo() # 4 1
+
+class Engine:
+    def start(self):
+        print("Двигатель заведен")
+class Car:
+    def __init__(self):
+        self.engine = Engine()  # Создаем объект двигателя при создании машины
+    def start_car(self):
+        self.engine.start()  # Запускаем двигатель машины
+# Создаем машину
+my_car = Car()
+# Запускаем машину
+my_car.start_car()  # Вывод: 'Двигатель заведен'"""
+
+
+#ПРАКТИКА 5
+
+'''Практика. Часть 1
+Задание: Классы "Учебная программа" и "Курс"
+Создай класс Курс (Course) со следующими атрибутами:
+• название (название курса)
+• продолжительность (продолжительность курса в неделях)
+• преподаватель (имя преподавателя)
+
+Создай класс УчебнаяПрограмма (Curriculum) со следующими атрибутами:
+• название (название учебной программы)
+• курсы (список объектов класса Курс, входящих в учебную программу)
+Кроме того, у класса УчебнаяПрограмма должен быть метод добавить_курс,
+который принимает объект класса Курс и добавляет его в список курсов учебной
+программы. 
+Создай несколько объектов класса Курс и несколько объектов класса
+УчебнаяПрограмма. Добавь курсы в учебные программы с использованием метода
+добавить_курс.
+Выведи информацию о курсах в каждой учебной программе.
+
+Практика . Часть 2
+Задание: Классы "Банк", "Счет" и "Клиент"
+Создай класс Счет (Account) со следующими атрибутами:
+• номер_счета (уникальный номер счета)
+• баланс (текущий баланс на счете)
+•Создай класс Клиент (Client) со следующими атрибутами:
+• имя (имя клиента)
+• счет (объект класса Счет, который принадлежит клиенту)
+•Создай класс Банк (Bank) со следующими атрибутами:
+• название (название банка)
+• клиенты (список объектов класса Клиент, которые являются клиентами банка)
+Кроме того, у класса Банк должен быть метод создать_счет (create_account), который
+принимает имя клиента, создает новый счет для клиента и добавляет клиента в список клиентов
+банка.
+Создай несколько объектов класса Банк, несколько объектов класса Клиент и используй метод
+создать_счет, чтобы добавить счета клиентам.
+Реализуйте методы внести_на_счет и снять_со_счета в классе Счет, чтобы можно было изменять
+баланс счета.
+Выведи информацию о клиентах и их счетах.'''
+
+"""class Course:
+    '''Курс'''
+    def __init__(self, name, lasting, teacher):
+        '''Название курса, продолжительность курса в неделях, имя преподавателя'''
+        self.name = name
+        self.lasting = lasting
+        self.teacher = teacher
+
+class Curriculum:
+    '''Учебная Программа'''
+    def __init__(self):
+        '''Список объектов класса Курс, входящих в учебную программу'''
+        self.courses = []
+my_curriculum = Curriculum()
+course_1 = Course('online', 12, 'Mr. Smith')
+course_2 = Course('offline', 10, 'Mr. Anderson')
+my_curriculum.courses.append(course_1)
+my_curriculum.courses.append(course_2)
+for course in my_curriculum.courses:
+    print(f"Название учебной программы {course.name}, Название курса {course.lasting} недель, Имя учителя {course.teacher}")"""
+
+#ЗАДАНИЕ 2
+
+'''Создай класс Счет (Account) со следующими атрибутами:
+• номер_счета (уникальный номер счета)
+• баланс (текущий баланс на счете)
+
+•Создай класс Клиент (Client) со следующими атрибутами:
+• имя (имя клиента)
+• счет (объект класса Счет, который принадлежит клиенту)
+
+•Создай класс Банк (Bank) со следующими атрибутами:
+• название (название банка)
+• клиенты (список объектов класса Клиент, которые являются клиентами банка)
+
+Кроме того, у класса Банк должен быть метод создать_счет (create_account), который
+принимает имя клиента, создает новый счет для клиента и добавляет клиента в список клиентов
+банка.
+
+Создай несколько объектов класса Банк, несколько объектов класса Клиент и используй метод
+создать_счет, чтобы добавить счета клиентам.
+Реализуйте методы внести_на_счет и снять_со_счета в классе Счет, чтобы можно было изменять
+баланс счета.
+Выведи информацию о клиентах и их счетах.'''
+
+class Account:
+    '''Счет'''
+    def __init__(self, account_number, balance):
+        '''Уникальный номер счета, текущий баланс на счете'''
+        self.account_number = account_number
+        self.balance = balance
+
+    def deposit(self, amount):
+        '''Внести на счет'''
+        self.balance += amount
+
+    def withdraw(self, amount):
+        '''Снять со счета'''
+        if amount <= self.balance:
+            self.balance -= amount
+            return True
+        else:
+            print("Недостаточно средств на счете.")
+            return False
+
+class Client:
+    '''Клиент'''
+    def __init__(self, name, score):
+        self.name = name
+        self.score = score
+
+class Bank:
+    '''Банк'''
+    def __init__(self, bank_name):
+        self.bank_name = bank_name
+        self.clients = []
+
+    def create_account(self, client_name, initial_balance=0):
+        '''Создает новый счет и добавляет клиента в список клиентов банка'''
+        account_number = len(self.clients) + 1
+        new_account = Account(account_number, initial_balance)
+        new_client = Client(client_name, new_account)
+        self.clients.append(new_client)
+        return new_account
+
+
+# Банк
+bank1 = Bank("Bank of A")
+bank2 = Bank("Bank of B")
+
+#Клиент
+client1 = Client("Олег", "VIP")
+client2 = Client("Настя", "Обычный")
+
+# Добавление счетов
+account1 = bank1.create_account(client1.name, 1000)
+account2 = bank2.create_account(client2.name, 500)
+
+# Внесение и снятие
+account1.deposit(500)
+account2.withdraw(200)
+
+# Вывод информации о клиентах и их счетах
+for client in bank1.clients:
+    print(f"Клиент: {client.name}, Баланс счета: {client.score.balance} Сом")
+
+for client in bank2.clients:
+    print(f"Клиент: {client.name}, Баланс счета: {client.score.balance} Сом")
 
 
