@@ -685,68 +685,420 @@ for course in my_curriculum.courses:
 баланс счета.
 Выведи информацию о клиентах и их счетах.'''
 
-class Account:
-    '''Счет'''
-    def __init__(self, account_number, balance):
-        '''Уникальный номер счета, текущий баланс на счете'''
-        self.account_number = account_number
-        self.balance = balance
+# class Account:
+#     '''Счет'''
+#     def __init__(self, account_number, balance):
+#         '''Уникальный номер счета, текущий баланс на счете'''
+#         self.account_number = account_number
+#         self.balance = balance
+#
+#     def deposit(self, amount):
+#         '''Внести на счет'''
+#         self.balance += amount
+#
+#     def withdraw(self, amount):
+#         '''Снять со счета'''
+#         if amount <= self.balance:
+#             self.balance -= amount
+#             return True
+#         else:
+#             print("Недостаточно средств на счете.")
+#             return False
+#
+# class Client:
+#     '''Клиент'''
+#     def __init__(self, name, score):
+#         self.name = name
+#         self.score = score
+#
+# class Bank:
+#     '''Банк'''
+#     def __init__(self, bank_name):
+#         self.bank_name = bank_name
+#         self.clients = []
+#
+#     def create_account(self, client_name, initial_balance=0):
+#         '''Создает новый счет и добавляет клиента в список клиентов банка'''
+#         account_number = len(self.clients) + 1
+#         new_account = Account(account_number, initial_balance)
+#         new_client = Client(client_name, new_account)
+#         self.clients.append(new_client)
+#         return new_account
+#
+#
+# # Банк
+# bank1 = Bank("Bank of A")
+# bank2 = Bank("Bank of B")
+#
+# #Клиент
+# client1 = Client("Олег", "VIP")
+# client2 = Client("Настя", "Обычный")
+#
+# # Добавление счетов
+# account1 = bank1.create_account(client1.name, 1000)
+# account2 = bank2.create_account(client2.name, 500)
+#
+# # Внесение и снятие
+# account1.deposit(500)
+# account2.withdraw(200)
+#
+# # Вывод информации о клиентах и их счетах
+# for client in bank1.clients:
+#     print(f"Клиент: {client.name}, Баланс счета: {client.score.balance} Сом")
+#
+# for client in bank2.clients:
+#     print(f"Клиент: {client.name}, Баланс счета: {client.score.balance} Сом")
 
-    def deposit(self, amount):
-        '''Внести на счет'''
-        self.balance += amount
-
-    def withdraw(self, amount):
-        '''Снять со счета'''
-        if amount <= self.balance:
-            self.balance -= amount
-            return True
-        else:
-            print("Недостаточно средств на счете.")
-            return False
-
-class Client:
-    '''Клиент'''
-    def __init__(self, name, score):
-        self.name = name
-        self.score = score
-
-class Bank:
-    '''Банк'''
-    def __init__(self, bank_name):
-        self.bank_name = bank_name
-        self.clients = []
-
-    def create_account(self, client_name, initial_balance=0):
-        '''Создает новый счет и добавляет клиента в список клиентов банка'''
-        account_number = len(self.clients) + 1
-        new_account = Account(account_number, initial_balance)
-        new_client = Client(client_name, new_account)
-        self.clients.append(new_client)
-        return new_account
 
 
-# Банк
-bank1 = Bank("Bank of A")
-bank2 = Bank("Bank of B")
 
-#Клиент
-client1 = Client("Олег", "VIP")
-client2 = Client("Настя", "Обычный")
 
-# Добавление счетов
-account1 = bank1.create_account(client1.name, 1000)
-account2 = bank2.create_account(client2.name, 500)
+#ПРАКТИКА 27 МАЯ
 
-# Внесение и снятие
-account1.deposit(500)
-account2.withdraw(200)
 
-# Вывод информации о клиентах и их счетах
-for client in bank1.clients:
-    print(f"Клиент: {client.name}, Баланс счета: {client.score.balance} Сом")
 
-for client in bank2.clients:
-    print(f"Клиент: {client.name}, Баланс счета: {client.score.balance} Сом")
+# class Aircraft:
+#     '''Самолет'''
+#     def __init__(self, model, seats, route=None):
+#         self.model = model
+#         self.seats = seats
+#         self.flight = False
+#         self.route = route
+#
+#     def take_off(self):
+#         '''Взлет самолета'''
+#         if not self.flight:
+#             self.flight = True
+#             print(f"{self.model} взлетел.")
+#         else:
+#             print(f"{self.model} уже в полете.")
+#
+#     def land(self):
+#         '''Земля'''
+#         if self.flight:
+#             self.flight = False
+#             print(f"{self.model} приземлился.")
+#         else:
+#             print(f"{self.model} уже на земле.")
+#
+#     def change_route(self, new_route):
+#         '''Изменение маршрута'''
+#         if self.flight:
+#             self.route = new_route
+#             print(f"Маршрут изменен на {new_route}.")
+#         else:
+#             print(f"{self.model} на земле. Маршрут изменен на {new_route}, но самолет еще не в полете.")
+#
+#     def display_info(self):
+#         '''Отобразить информацию'''
+#         state = "в полете" if self.flight else "на земле"
+#         route_info = f"Маршрут: {self.route}" if self.route else "Маршрут не задан"
+#         print(f"Модель: {self.model}\nКоличество мест: {self.seats}\nСостояние: {state}\n{route_info}")
+#
+#
+# class Passenger:
+#     '''Пассажир'''
+#     def __init__(self, name, ticket_number=None, destination=None):
+#         self.name = name
+#         self.ticket_number = ticket_number
+#         self.destination = destination
+#
+#     def buy_ticket(self, ticket_number, destination):
+#         '''Покупка билета'''
+#         if self.ticket_number is None:
+#             self.ticket_number = ticket_number
+#             self.destination = destination
+#             print(f"Пассажир {self.name} купил билет номер {self.ticket_number} до {self.destination}.")
+#         else:
+#             print(f"Пассажир {self.name} уже имеет билет номер {self.ticket_number} до {self.destination}.")
+#
+#     def cancel_booking(self):
+#         '''Отмена бронирования'''
+#         if self.ticket_number is not None:
+#             print(f"Пассажир {self.name} отменил билет номер {self.ticket_number} до {self.destination}.")
+#             self.ticket_number = None
+#             self.destination = None
+#         else:
+#             print(f"У пассажира {self.name} нет активного бронирования.")
+#
+#     def display_info(self):
+#         if self.ticket_number is not None:
+#             print(f"Имя: {self.name}\nНомер билета: {self.ticket_number}\nМесто назначения: {self.destination}")
+#         else:
+#             print(f"Имя: {self.name}\nБилет не куплен")
+#
+#
+# class Ticket:
+#     '''Билет'''
+#     def __init__(self, ticket_number, passenger_info, destination):
+#         self.ticket_number = ticket_number
+#         self.passenger_info = passenger_info
+#         self.destination = destination
+#
+#     def display_info(self):
+#         print(f"Номер билета: {self.ticket_number}")
+#         print(f"Информация о пассажире: {self.passenger_info}")
+#         print(f"Место назначения: {self.destination}")
+#
+#
+# # Примеры использования:
+# print("Пример использования класса Aircraft:")
+#
+# aircraft = Aircraft("Боинг 747", 416)
+# aircraft.display_info()
+# aircraft.take_off()
+# aircraft.change_route("Бишкек - Москва")
+# aircraft.display_info()
+# aircraft.land()
+# aircraft.display_info()
+#
+# print("\nПример использования класса Passenger:")
+#
+# passenger = Passenger("Иван Иванович")
+# passenger.display_info()
+# passenger.buy_ticket("12345", "Москва")
+# passenger.display_info()
+# passenger.cancel_booking()
+# passenger.display_info()
+#
+# print("\nПример использования класса Ticket:")
+#
+# ticket1 = Ticket("123456", "Иван Иванович", "Москва")
+# ticket1.display_info()
+
+
+# class Project:
+#     '''Проект'''
+#
+#     def __init__(self, name, description, deadline, current_project_status, list_participants=None):
+#         self.name = name
+#         self.description = description
+#         self.deadline = deadline
+#         self.current_project_status = current_project_status
+#         self.list_participants = list_participants if list_participants is not None else []
+#
+#     def change_status(self, new_status):
+#         '''Проверка статуса'''
+#         valid_statuses = ['Не начат', 'В процессе', 'Завершен']
+#         if new_status in valid_statuses:
+#             self.current_project_status = new_status
+#         else:
+#             print(f"Некорректный статус: {new_status}. Допустимые статусы: {', '.join(valid_statuses)}")
+#
+#     def add_participant(self, participant):
+#         '''Добавление участника'''
+#         if participant not in self.list_participants:
+#             self.list_participants.append(participant)
+#         else:
+#             print(f"{participant} уже является участником этого проекта.")
+#
+#     def remove_participant(self, participant):
+#         '''Удаление участника'''
+#         if participant in self.list_participants:
+#             self.list_participants.remove(participant)
+#                '''Удаление участника'''
+#         if participant in self.list_participants:
+#             self.list_participants.remove(participant)
+#         else:
+#             print(f"{participant} не является участником этого проекта.")
+#
+#     def display_info(self):
+#         '''Отобразить информацию'''
+#         print("Название проекта:", self.name)
+#         print("Описание:", self.description)
+#         print("Срок:", self.deadline)
+#         print("Статус:", self.current_project_status)
+#         print("Участники:", ", ".join(self.list_participants))
+#
+# # Пример использования:
+# project = Project("Новый вебсайт", "Разработка нового вебсайта компании", "2024-12-31", "Не начат")
+# project.add_participant("Алиса")
+# project.add_participant("Бобсан")
+# project.display_info()
+# project.change_status("В процессе")
+# project.remove_participant("Алиса")
+# project.display_info()
+
+
+# class ProjectMember:
+#     '''Участник проекта'''
+#     def __init__(self, name, role, responsibility, status=None):
+#         self.name = name
+#         self.role = role
+#         self.responsibility = responsibility
+#         self.status = status
+#
+#     def change_status(self, new_status):
+#         '''Проверка статуса'''
+#         self.status = new_status
+#
+#
+#     def display_info(self):
+#         '''Отобразить информацию'''
+#         print("Имя:", self.name)
+#         print("Роль:", self.role)
+#         print("Ответственность:", self.responsibility)
+#         print("Статус:", self.status)
+# # Пример для класса ProjectManager
+# member1 = ProjectMember("Иванов Иван", "Разработчик", "Разработка пользовательского интерфейса")
+# member1.display_info()
+# member1.change_status("Неактивен")
+# member1.display_info()
+
+
+# class Task:
+#     '''Представления задачи в проекте'''
+#     def __init__(self, title, description, status='Не начата', assignee=None):
+#         self.title = title
+#         self.description = description
+#         self.status = status
+#         self.assignee = assignee
+#
+#     def change_status(self, new_status):
+#         '''Изменение статуса выполнения задачи'''
+#         self.status = new_status
+#         print(f"Статус задачи '{self.title}' изменен на '{self.status}'.")
+#
+#     def assign(self, assignee):
+#         '''Назначение ответственного участника'''
+#         self.assignee = assignee
+#         print(f"Задача '{self.title}' назначена на {self.assignee}.")
+#
+#     def display_info(self):
+#         '''Отображение информации о задаче'''
+#         assignee_info = f"Ответственный участник: {self.assignee}" if self.assignee else "Ответственный участник не назначен"
+#         print(f"Название: {self.title}\nОписание: {self.description}\nСтатус: {self.status}\n{assignee_info}")
+#
+#
+# # Пример использования:
+# task1 = Task("Разработка интерфейса", "Создать пользовательский интерфейс для нового приложения.")
+# task1.display_info()
+# task1.change_status("В процессе")
+# task1.assign("Алеша")
+# task1.display_info()
+# task1.change_status("Завершена")
+# task1.display_info()
+#
+# task2 = Task("Написание документации", "Создать техническую документацию для проекта.")
+# task2.display_info()
+# task2.assign("Маша")
+# task2.change_status("Начата")
+# task2.display_info()
+
+# class Task:
+#     '''Класс для представления задачи в проекте'''
+#     def __init__(self, title, description, status='Не начата', assignee=None):
+#         self.title = title
+#         self.description = description
+#         self.status = status
+#         self.assignee = assignee
+#
+#     def change_status(self, new_status):
+#         '''Изменение статуса выполнения задачи'''
+#         self.status = new_status
+#         print(f"Статус задачи '{self.title}' изменен на '{self.status}'.")
+#
+#     def assign(self, assignee):
+#         '''Назначение ответственного участника'''
+#         self.assignee = assignee
+#         print(f"Задача '{self.title}' назначена на {self.assignee}.")
+#
+#     def display_info(self):
+#         '''Отображение информации о задаче'''
+#         assignee_info = f"Ответственный участник: {self.assignee}" if self.assignee else "Ответственный участник не назначен"
+#         print(f"Название: {self.title}\nОписание: {self.description}\nСтатус: {self.status}\n{assignee_info}")
+#
+#
+# class Project:
+#     '''Класс для представления проекта'''
+#     def __init__(self, name):
+#         self.name = name
+#         self.tasks = []
+#         self.participants = []
+#
+#     def add_task(self, task):
+#         '''Добавление задачи в проект'''
+#         self.tasks.append(task)
+#         print(f"Задача '{task.title}' добавлена в проект '{self.name}'.")
+#
+#     def add_participant(self, participant):
+#         '''Добавление участника в проект'''
+#         self.participants.append(participant)
+#         print(f"Участник '{participant}' добавлен в проект '{self.name}'.")
+#
+#     def display_info(self):
+#         '''Отображение информации о проекте'''
+#         print(f"Проект: {self.name}")
+#         print("Участники:")
+#         for participant in self.participants:
+#             print(f" - {participant}")
+#         print("Задачи:")
+#         for task in self.tasks:
+#             task.display_info()
+#
+#
+# class ProjectManager:
+#     '''Класс для управления проектами'''
+#     def __init__(self):
+#         self.projects = {}
+#
+#     def create_project(self, project_name):
+#         '''Создание нового проекта'''
+#         if project_name not in self.projects:
+#             self.projects[project_name] = Project(project_name)
+#             print(f"Проект '{project_name}' создан.")
+#         else:
+#             print(f"Проект с названием '{project_name}' уже существует.")
+#
+#     def add_task_to_project(self, project_name, task):
+#         '''Добавление задачи в проект'''
+#         if project_name in self.projects:
+#             self.projects[project_name].add_task(task)
+#         else:
+#             print(f"Проект с названием '{project_name}' не найден.")
+#
+#     def add_participant_to_project(self, project_name, participant):
+#         '''Добавление участника в проект'''
+#         if project_name in self.projects:
+#             self.projects[project_name].add_participant(participant)
+#         else:
+#             print(f"Проект с названием '{project_name}' не найден.")
+#
+#     def change_task_status(self, project_name, task_title, new_status):
+#         '''Изменение статуса задачи в проекте'''
+#         if project_name in self.projects:
+#             project = self.projects[project_name]
+#             for task in project.tasks:
+#                 if task.title == task_title:
+#                     task.change_status(new_status)
+#                     return
+#             print(f"Задача с названием '{task_title}' не найдена в проекте '{project_name}'.")
+#         else:
+#             print(f"Проект с названием '{project_name}' не найден.")
+#
+#     def display_project_info(self, project_name):
+#         '''Отображение информации о проекте'''
+#         if project_name in self.projects:
+#             self.projects[project_name].display_info()
+#         else:
+#             print(f"Проект с названием '{project_name}' не найден.")
+#
+#
+# # Пример использования:
+# manager = ProjectManager()
+# manager.create_project("Разработка ПО")
+# manager.add_participant_to_project("Разработка ПО", "Иван Иванович")
+# manager.add_participant_to_project("Разработка ПО", "Мария Иванова")
+#
+# task1 = Task("Разработка интерфейса", "Создать пользовательский интерфейс для нового приложения.")
+# manager.add_task_to_project("Разработка ПО", task1)
+#
+# task2 = Task("Написание документации", "Создать техническую документацию для проекта.")
+# manager.add_task_to_project("Разработка ПО", task2)
+#
+# manager.display_project_info("Разработка ПО")
+#
+# manager.change_task_status("Разработка ПО", "Разработка интерфейса", "В процессе")
+# manager.display_project_info("Разработка ПО")
 
 
