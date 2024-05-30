@@ -1,4 +1,5 @@
 from abc import ABC,abstractmethod
+import random
 # ПЕРВЫЙ УРОК
 """class Animal:
     paws = 4
@@ -10,7 +11,7 @@ class Cat(Animal):
 class Dog(Animal):
     def woof(self):
         print("Woof")
-class Parrot(Animal):
+class Parrot(Animal):z
     def __init__(self,name):
         Animal.__init__(self,name)
         self.paws = 2
@@ -867,6 +868,10 @@ for course in my_curriculum.courses:
 # ticket1.display_info()
 
 
+
+
+
+
 # class Project:
 #     '''Проект'''
 #
@@ -1101,4 +1106,54 @@ for course in my_curriculum.courses:
 # manager.change_task_status("Разработка ПО", "Разработка интерфейса", "В процессе")
 # manager.display_project_info("Разработка ПО")
 
+
+
+
+
+class ArithmeticExampleGenerator:
+    def __init__(self, N):
+        self._N = N
+
+    def set_N(self, N):
+        if N <= 0:
+            raise ValueError("Количество примеров должно быть положительным числом.")
+        self._N = N
+
+    def get_N(self):
+        return self._N
+
+    def del_N(self):
+        del self._N
+
+    N = property(get_N, set_N, del_N)
+
+    def generate_examples(self):
+        signs = ['+', '-', '*', '/']
+        examples = []
+
+        for _ in range(self._N):
+            a = random.randint(1, 100)
+            b = random.randint(1, 100)
+            sign = random.choice(signs)
+            if sign == '/' and b == 0:
+                b = random.randint(1, 100)
+            examples.append(f"{a} {sign} {b} =")
+
+        return examples
+
+    def save_to_file(self, filename="examples.txt"):
+        examples = self.generate_examples()
+        with open(filename, "w") as file:
+            for example in examples:
+                file.write(example + "\n")
+        print(f"{self._N} примеров успешно записаны в {filename}")
+
+
+if __name__ == "__main__":
+    try:
+        N = int(input("Введите количество примеров: "))
+        generator = ArithmeticExampleGenerator(N)
+        generator.save_to_file()
+    except ValueError as e:
+        print(f"Ошибка: {e}")
 
